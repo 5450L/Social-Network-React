@@ -1,3 +1,6 @@
+import contentStyles from './Content.module.css'
+import Posts from "./Posts/Posts";
+
 const Content = () => {
     return (
         <content>
@@ -10,16 +13,7 @@ const Content = () => {
                 ava+desc
             </div>
 
-            <div>
-                Posts
-                <div>New post</div>
-
-                <ul>
-                    <li className='Post'>Post</li>
-                    <li className='Post'>Post</li>
-                    <li className='Post'>Post</li>
-                </ul>
-            </div>
+            <Posts/>
 
         </content>
     )

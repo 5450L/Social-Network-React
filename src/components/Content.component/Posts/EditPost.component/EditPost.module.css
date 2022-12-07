@@ -1,0 +1,11 @@
+.editPost {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.editButtons {
+    display: flex;
+    flex-direction: row;
+}

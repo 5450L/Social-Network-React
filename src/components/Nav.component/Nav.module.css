@@ -1,0 +1,11 @@
+nav {
+    grid-area: n;
+
+    height: 98%;
+
+    background-color: #1c1a1a;
+}
+
+.linkItem {
+    color: orangered;
+}

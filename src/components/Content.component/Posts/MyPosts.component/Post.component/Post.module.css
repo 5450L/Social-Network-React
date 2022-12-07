@@ -1,0 +1,20 @@
+.post {
+    margin-top: 2rem;
+}
+
+.avaText {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0.25rem;
+}
+
+.avaText img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 20px;
+}
+
+.avaText h3 {
+    margin: auto 1rem;
+    color: darkslategray;
+}

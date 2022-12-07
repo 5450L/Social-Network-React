@@ -1,0 +1,15 @@
+content {
+    grid-area: c;
+
+    width: 90%;
+    height: 98%;
+    margin: 0 auto;
+
+    background-color: aliceblue;
+}
+
+content img {
+    height: 10rem;
+    width: 100%;
+
+}

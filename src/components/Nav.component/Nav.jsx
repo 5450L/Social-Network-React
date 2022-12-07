@@ -1,16 +1,27 @@
 import navStyles from './Nav.module.css'
+import {NavLink} from "react-router-dom";
 
-const Nav = () => {
+const Nav = (props) => {
     return (
-        <nav>
+        <div className={navStyles.nav}>
             <ul>
-                <li><a className={navStyles.linkItem}>Profile</a></li>
-                <li><a className={navStyles.linkItem}>Messages</a></li>
-                <li><a className={navStyles.linkItem}>News</a></li>
-                <li><a className={navStyles.linkItem}>Music</a></li>
-                <li><a className={navStyles.linkItem}>Settings</a></li>
+                <li className={navStyles.linkItem}><NavLink to='/profile'
+                                                            className={(navData) => (navData.isActive ? `${navStyles.active}` : 'none')}>Profile</NavLink>
+                </li>
+                <li className={navStyles.linkItem}><NavLink to='/dialogs'
+                                                            className={(navData) => (navData.isActive ? `${navStyles.active}` : 'none')}>Messages</NavLink>
+                </li>
+                <li className={navStyles.linkItem}><NavLink to='/news'
+                                                            className={(navData) => (navData.isActive ? `${navStyles.active}` : 'none')}>News</NavLink>
+                </li>
+                <li className={navStyles.linkItem}><NavLink to='/music'
+                                                            className={(navData) => (navData.isActive ? `${navStyles.active}` : 'none')}>Music</NavLink>
+                </li>
+                <li className={navStyles.linkItem}><NavLink to='/settings'
+                                                            className={(navData) => (navData.isActive ? `${navStyles.active}` : 'none')}>Settings</NavLink>
+                </li>
             </ul>
-        </nav>
+        </div>
     )
 }
 

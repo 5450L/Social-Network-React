@@ -1,4 +1,4 @@
-nav {
+.nav {
     grid-area: n;
 
     height: 98%;
@@ -6,6 +6,18 @@ nav {
     background-color: #1c1a1a;
 }
 
-.linkItem {
+.nav li {
+    margin-bottom: 0.75rem;
+}
+
+.linkItem a {
     color: orangered;
+}
+
+.linkItem:hover a {
+    text-decoration: underline;
+}
+
+.linkItem a.active {
+    color: #f3da5d;
 }

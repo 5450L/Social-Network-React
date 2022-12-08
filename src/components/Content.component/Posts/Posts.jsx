@@ -3,17 +3,13 @@ import EditPost from "./EditPost.component/EditPost";
 import postsStyles from './Posts.module.css'
 import MyPosts from "./MyPosts.component/MyPosts";
 
-const Posts = () => {
+const Posts = (props) => {
     return (
-
-
         <div className={postsStyles.Posts}>
             <h2>Posts</h2>
             <EditPost/>
-            <MyPosts/>
+            <MyPosts posts={props.posts}/>
         </div>
-
-
     )
 }
 

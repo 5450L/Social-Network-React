@@ -1,3 +1,7 @@
 .Posts {
     padding: 1rem;
 }
+
+.Posts ul {
+    padding: 0;
+}

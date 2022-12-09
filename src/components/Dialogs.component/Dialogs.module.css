@@ -1,18 +1,65 @@
 .dialogs {
+    margin: 2rem;
     display: grid;
-    grid-template-columns:2fr 5fr;
+    grid-template-columns:1fr 5fr;
+
+}
+
+.dialogs img {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 100px;
 }
 
 .dialogsItems {
+
     padding: 1rem;
+    border-right: 1px solid #3f3c3c;
 }
 
 .dialogsItem {
+    display: flex;
+    flex-direction: row;
+    margin: 2rem auto;
+    padding: 0.5rem;
+    border: 1px solid darkslategrey;
+    border-radius: 20px;
+}
+
+.dialogsItem:hover {
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+
+.dialogsItem a {
+    display: block;
+    margin: auto 0 auto 1rem;
+
 }
 
 .messages {
     padding: 1rem;
+    padding-left: 2rem;
+
 }
 
+
 .message {
+    display: flex;
+
+    margin: 2rem;
 }
+
+.my {
+    flex-direction: row-reverse;
+}
+
+.respond {
+    flex-direction: row;
+}
+
+.message p{
+    margin-left: 2rem;
+}
+

@@ -12,9 +12,11 @@ const Dialogs = (props) => {
 
     return (
         <div className={dialogsStyles.dialogs}>
+
             <div className={dialogsStyles.dialogsItems}>
                 {dialogsTemplateArray}
             </div>
+
             <div className={dialogsStyles.messages}>
                 {messagesTemplateArray}
             </div>

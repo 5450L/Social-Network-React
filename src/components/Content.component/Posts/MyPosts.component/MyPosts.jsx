@@ -3,7 +3,7 @@ import myPostsStyles from './MyPosts.module.css'
 
 const MyPosts = (props) => {
 
-    let postTemplates = props.posts.map(post => <li><Post name={post.name} likeCount={post.likeCount}/></li>);
+    let postTemplates = props.posts.map(post => <li><Post post={post}/></li>);
 
     return (
         <div>

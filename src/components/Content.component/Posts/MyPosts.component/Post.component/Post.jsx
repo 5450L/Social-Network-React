@@ -5,9 +5,9 @@ const Post = (props) => {
         <div className={postStyles.post}>
             <div className={postStyles.avaText}>
                 <img src="https://www.film.ru/sites/default/files/people/_tmdb/8KYQUdXMIFMvtp7Ps7Ml2MIbJVE.jpg"/>
-                <h3>{props.message} </h3>
+                <h3>{props.post.message} </h3>
             </div>
-            <button>{props.likeCount} likes</button>
+            <button>{props.post.likeCount} likes</button>
         </div>
     )
 }

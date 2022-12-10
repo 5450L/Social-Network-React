@@ -7,8 +7,8 @@ const Posts = (props) => {
     return (
         <div className={postsStyles.Posts}>
             <h2>Posts</h2>
-            <EditPost/>
-            <MyPosts posts={props.posts}/>
+            <EditPost newPostText={props.profileData.newPostText} dispatch={props.dispatch}/>
+            <MyPosts posts={props.profileData.posts}/>
         </div>
     )
 }

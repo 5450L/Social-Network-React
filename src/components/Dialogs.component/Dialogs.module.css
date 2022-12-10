@@ -49,6 +49,12 @@
     display: flex;
 
     margin: 2rem;
+    padding: 1rem;
+
+    max-width: 40%;
+
+    background-color: white;
+    border-radius: 20px;
 }
 
 .my {
@@ -59,7 +65,15 @@
     flex-direction: row;
 }
 
-.message p{
+.message p {
     margin-left: 2rem;
+}
+
+.newMessage {
+    margin-left: 4rem;
+}
+
+.newMessage textarea {
+    width: 30%;
 }
 

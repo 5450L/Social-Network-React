@@ -1,17 +1,17 @@
 import editPostStyles from './EditPost.module.css'
 import React from "react";
+import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../../redux/state";
 
 const EditPost = (props) => {
 
-
     let newPost = React.createRef();
     let addPost = () => {
-        props.dispatch({type: 'ADD-POST', payload: {}})
+        props.dispatch(addPostActionCreator());
     }
 
     let onPostTextChange = () => {
         let text = newPost.current.value;
-        props.dispatch({type: 'UPDATE-NEW-POST-TEXT', payload: {newPostText: text}})
+        props.dispatch(updateNewPostTextActionCreator(text));
     }
 
     return (

@@ -4,6 +4,7 @@ import {NavLink} from "react-router-dom";
 import DialogsItem from "./DialogsItem/DialogsItem";
 import Message from "./Message/Message";
 import editPostStyles from "../Content.component/Posts/EditPost.component/EditPost.module.css";
+import MessageEdit from "./MessageEdit/MessageEdit";
 
 const Dialogs = (props) => {
 
@@ -29,20 +30,12 @@ const Dialogs = (props) => {
             </div>
 
             <div className={dialogsStyles.messagesArea}>
+
+                <MessageEdit newMessageText={props.dialogsData.newMessageText} dispatch={props.dispatch}/>
+
                 <div className={dialogsStyles.messages}>
                     {messagesTemplateArray}
                 </div>
-
-                <div className={dialogsStyles.newMessage}>
-                    <textarea placeholder="Type your message..." ref={newMessage}></textarea>
-
-                    <div className={editPostStyles.messageButtons}>
-                        <button onClick={onSend}>Send</button>
-                        <button>Cancel</button>
-                    </div>
-
-                </div>
-
             </div>
 
         </div>

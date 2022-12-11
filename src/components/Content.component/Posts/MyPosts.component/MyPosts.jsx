@@ -6,7 +6,7 @@ const MyPosts = (props) => {
     let postTemplates = props.posts.map(post => <li key={post.id}><Post post={post}/></li>);
 
     return (
-        <div>
+        <div className={myPostsStyles.myPosts}>
             <ul>
                 {postTemplates}
             </ul>

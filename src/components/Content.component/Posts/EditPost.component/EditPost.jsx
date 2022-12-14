@@ -1,17 +1,16 @@
 import editPostStyles from './EditPost.module.css'
 import React from "react";
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../../redux/reducers/profile-reducer";
 
 const EditPost = (props) => {
 
     let newPost = React.createRef();
-    let addPost = () => {
-        props.dispatch(addPostActionCreator());
+    let onAddPost = () => {
+        props.addPost();
     }
 
     let onPostTextChange = () => {
         let text = newPost.current.value;
-        props.dispatch(updateNewPostTextActionCreator(text));
+        props.updateNewPostText(text);
     }
 
     return (
@@ -19,7 +18,7 @@ const EditPost = (props) => {
             <textarea placeholder="Type your post..." ref={newPost} onChange={onPostTextChange}
                       value={props.newPostText}></textarea>
             <div className={editPostStyles.editButtons}>
-                <button onClick={addPost}>Create post</button>
+                <button onClick={onAddPost}>Create post</button>
                 <button>Cancel</button>
             </div>
         </div>

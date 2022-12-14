@@ -6,7 +6,7 @@ const Content = (props) => {
     return (
         <div className={contentStyles.content}>
             <ProfileInfo/>
-            <Posts profileData={props.profileData} dispatch={props.dispatch}/>
+            <Posts store={props.store}/>
         </div>
     )
 }

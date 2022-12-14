@@ -8,15 +8,6 @@ import MessageEdit from "./MessageEdit/MessageEdit";
 
 const Dialogs = (props) => {
 
-
-    let newMessage = React.createRef();
-    let onSend = () => {
-        let text = newMessage.current.value;
-        newMessage.current.value = null;
-        alert(text);
-    }
-
-
     let dialogsTemplateArray = props.dialogsData.dialogs.map(dialog => <DialogsItem name={dialog.name}
                                                                                     id={dialog.id}/>);
     let messagesTemplateArray = props.dialogsData.messages.map(message => <Message message={message.message}

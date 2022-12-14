@@ -1,6 +1,6 @@
 import editPostStyles from './EditPost.module.css'
 import React from "react";
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../../redux/state";
+import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../../redux/reducers/profile-reducer";
 
 const EditPost = (props) => {
 

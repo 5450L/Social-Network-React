@@ -1,12 +1,6 @@
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const SEND_MESSAGE = 'SEND-MESSAGE';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
-
-export const addPostActionCreator = () => ({type: ADD_POST});
-export const updateNewPostTextActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newPostText: text});
-export const sendMessageActionCreator = () => ({type: SEND_MESSAGE});
-export const updateNewMessageTextActionCreator = (text) => ({type: UPDATE_NEW_MESSAGE_TEXT, newMessageText: text});
+import profileReducer from "./reducers/profile-reducer";
+import dialogsReducer from "./reducers/dialogs-reducer";
+import sidebarReducer from "./reducers/sidebarReducer";
 
 let store = {
     _state: {
@@ -34,7 +28,8 @@ let store = {
                 {message: 'Whats up', id: 4}
             ],
             newMessageText: ''
-        }
+        },
+        sidebar: {}
     },
 
     _callSubscriber() {
@@ -49,33 +44,12 @@ let store = {
     },
 
     dispatch(action) {
-        switch (action.type) {
-            case ADD_POST:
-                let newPost = {
-                    message: this._state.profilePage.newPostText,
-                    likeCount: 0,
-                    id: (this._state.profilePage.posts.length + 1)
-                }
-                this._state.profilePage.posts.push(newPost);
-                this._state.profilePage.newPostText = '';
-                this._callSubscriber(store);
-            case UPDATE_NEW_POST_TEXT:
-                this._state.profilePage.newPostText = action.newPostText;
-                console.log(this._state.profilePage.newPostText);
-                this._callSubscriber(store);
-            case SEND_MESSAGE:
-                let newMessage = {
-                    message: this._state.dialogsPage.newMessageText,
-                    id: (this._state.dialogsPage.messages.length + 1)
-                }
-                this._state.dialogsPage.messages.push(newMessage);
-                this._state.dialogsPage.newMessageText = '';
-                this._callSubscriber(store);
-            case UPDATE_NEW_MESSAGE_TEXT:
-                this._state.dialogsPage.newMessageText = action.newMessageText;
-                this._callSubscriber(store);
 
-        }
+        profileReducer(this._state.profilePage, action);
+        dialogsReducer(this._state.dialogsPage, action);
+        sidebarReducer(this._state.sidebar, action);
+
+        this._callSubscriber(this._state);
     }
 
 }

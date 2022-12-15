@@ -1,20 +1,21 @@
 import MessageEdit from "./MessageEdit";
 import {sendMessageActionCreator, updateNewMessageTextActionCreator} from "../../../redux/reducers/dialogs-reducer";
+import {connect} from "react-redux";
 
-const MessageEditContainer = (props) => {
+let MapStateToProps = (state) => {
+    return {newMessageText: state.dialogsPage.newMessageText}
+}
+let MapDispatchToProps = (dispatch) => {
+    return {
+        messageTextChange: (text) => {
+            dispatch(updateNewMessageTextActionCreator(text))
+        },
+        sendMessage: () => {
+            dispatch(sendMessageActionCreator())
+        }
+    }
+}
 
-    let sendMessage = () => {
-        props.store.dispatch(sendMessageActionCreator());
-    };
-
-    let messageTextChange = (text) => {
-        props.store.dispatch(updateNewMessageTextActionCreator(text));
-    };
-
-    return (
-        <MessageEdit newMessageText={props.store.getState().dialogsPage.newMessageText}
-                     messageTextChange={messageTextChange} sendMessage={sendMessage}/>
-    );
-};
+const MessageEditContainer = connect(MapStateToProps, MapDispatchToProps)(MessageEdit)
 
 export default MessageEditContainer;

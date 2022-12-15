@@ -6,8 +6,8 @@ const Posts = (props) => {
     return (
         <div className={postsStyles.Posts}>
             <h2>Posts</h2>
-            <EditPostContainer store={props.store}/>
-            <MyPostsContainer store={props.store}/>
+            <EditPostContainer />
+            <MyPostsContainer />
         </div>
     )
 }

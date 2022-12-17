@@ -20,6 +20,9 @@ const Nav = (props) => {
                 <li className={navStyles.linkItem}><NavLink to='/settings'
                                                             className={(navData) => (navData.isActive ? `${navStyles.active}` : 'none')}>Settings</NavLink>
                 </li>
+                <li className={navStyles.linkItem}><NavLink to='/users'
+                                                            className={(navData) => (navData.isActive ? `${navStyles.active}` : 'none')}>Users</NavLink>
+                </li>
             </ul>
         </div>
     )

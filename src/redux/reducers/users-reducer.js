@@ -5,27 +5,29 @@ const SET_USERS = 'SET_USERS';
 
 let initialState = {
     users: [
-        {
-            id: 1,
-            fullName: 'Vetaliy',
-            status: 'Some status',
-            followed: false,
-            location: {city: 'Kharkiv', country: 'Ukraine'}
-        },
-        {
-            id: 2,
-            fullName: 'Kolya',
-            status: 'Some kolya status',
-            followed: true,
-            location: {city: 'Ankara', country: 'Turkey'}
-        }
+        // {
+        //     id: 1,
+        //     fullName: 'Vetaliy',
+        //     status: 'Some status',
+        //     photoUrl: 'https://img.pravda.com/images/doc/c/5/c57f19f-bf6cc41-275622598-512933153533681-6934265882643283131-n.jpg',
+        //     followed: false,
+        //     location: {city: 'Kharkiv', country: 'Ukraine'}
+        // },
+        // {
+        //     id: 2,
+        //     fullName: 'Kolya',
+        //     status: 'Some kolya status',
+        //     photoUrl: 'https://img.pravda.com/images/doc/c/5/c57f19f-bf6cc41-275622598-512933153533681-6934265882643283131-n.jpg',
+        //     followed: true,
+        //     location: {city: 'Ankara', country: 'Turkey'}
+        // }
     ]
 };
 
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_USERS:
-            return {...state, users: [...state.users, action.users]};
+            return {...state, users: [...action.users]};
         case FOLLOW:
             return {
                 ...state,

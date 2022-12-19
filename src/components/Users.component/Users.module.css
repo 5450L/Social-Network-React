@@ -1,3 +1,17 @@
+.pageSelector {
+    margin-right: 0.25rem;
+}
+
+.pageSelector:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    color: orangered;
+}
+
+.selectedPage {
+    font-weight: bold;
+}
+
 .userImage {
     width: 4rem;
     height: 4rem;

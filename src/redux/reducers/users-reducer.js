@@ -1,33 +1,25 @@
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 
 
 let initialState = {
-    users: [
-        // {
-        //     id: 1,
-        //     fullName: 'Vetaliy',
-        //     status: 'Some status',
-        //     photoUrl: 'https://img.pravda.com/images/doc/c/5/c57f19f-bf6cc41-275622598-512933153533681-6934265882643283131-n.jpg',
-        //     followed: false,
-        //     location: {city: 'Kharkiv', country: 'Ukraine'}
-        // },
-        // {
-        //     id: 2,
-        //     fullName: 'Kolya',
-        //     status: 'Some kolya status',
-        //     photoUrl: 'https://img.pravda.com/images/doc/c/5/c57f19f-bf6cc41-275622598-512933153533681-6934265882643283131-n.jpg',
-        //     followed: true,
-        //     location: {city: 'Ankara', country: 'Turkey'}
-        // }
-    ]
+    users: [],
+    pageSize: 5,
+    totalUsersCount: 0,
+    currentPage: 1
 };
 
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_USERS:
-            return {...state, users: [...action.users]};
+            return {...state, users: action.users};
+        case SET_CURRENT_PAGE:
+            return {...state, currentPage: action.currentPage};
+        case SET_TOTAL_USERS_COUNT:
+            return {...state, totalUsersCount: action.totalCount};
         case FOLLOW:
             return {
                 ...state,
@@ -56,7 +48,8 @@ const usersReducer = (state = initialState, action) => {
 }
 
 export const setUsersAC = (users) => ({type: SET_USERS, users});
-
+export const setCurrentPageAC = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
+export const setTotalCountAC = (totalCount) => ({type: SET_TOTAL_USERS_COUNT, totalCount});
 export const followAC = (userId) => ({type: FOLLOW, userId});
 export const unfollowAC = (userId) => ({type: UNFOLLOW, userId});
 

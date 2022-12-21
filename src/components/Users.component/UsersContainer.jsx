@@ -24,7 +24,6 @@ class UsersContainer extends React.Component {
         `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`
       )
       .then((response) => {
-        console.log(response.data.totalCount);
         this.props.setUsers(response.data.items);
         this.props.setTotalUsersCount(response.data.totalCount);
         this.props.toggleFetching();

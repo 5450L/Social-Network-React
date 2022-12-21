@@ -10,3 +10,17 @@
     width: 4rem;
     margin-left: 1rem;
 }
+
+.loginBlock {
+    float: right;
+    margin: 0.75rem 1rem;
+    color: orangered;
+}
+
+.loginBlock a:hover {
+    text-decoration: underline;
+}
+
+.loginBlock p {
+    margin: 0;
+}

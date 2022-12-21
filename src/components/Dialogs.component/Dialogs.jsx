@@ -5,7 +5,6 @@ import Message from "./Message/Message";
 import MessageEditContainer from "./MessageEdit/MessageEditContainer";
 
 const Dialogs = (props) => {
-    console.log(props);
 
     let dialogsTemplateArray = props.store.getState().dialogsPage.dialogs.map(dialog => <DialogsItem
         name={dialog.name}

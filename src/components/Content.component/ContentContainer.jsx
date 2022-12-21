@@ -28,11 +28,10 @@ class ContentContainer extends React.Component {
     componentDidMount() {
 
         let userId = this.props.router.params.userId;
-        console.log(this.props.router.params.userId);
+
         axios
             .get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
             .then((response) => {
-                console.log(this.props);
                 this.props.setUserProfile(response.data);
             });
     };

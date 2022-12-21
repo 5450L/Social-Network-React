@@ -1,3 +1,15 @@
+img {
+    height: 10rem;
+}
+
+.statusImage {
+    width: 100%;
+}
+
+.userImage {
+    width: 20%;
+}
+
 .description {
     padding-left: 1rem;
 }

@@ -50,20 +50,30 @@ const Uses = (props) => {
               </div>
               <div>
                 {user.followed ?
-                    <button onClick={() => usersAPI.unfollow(user.id)
-                        .then(response => {
-                            if (response.data.resultCode == 0) {
-                                props.unfollow(user.id)
-                            }
-                        })}>
-                        unfollow
-                    </button> : (
-                        <button onClick={() => usersAPI.follow(user.id)
+                    <button disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {
+                        props.toggleFollowing(user.id);
+                        usersAPI.unfollow(user.id)
                             .then(response => {
                                 if (response.data.resultCode == 0) {
-                                    props.follow(user.id)
+                                    props.unfollow(user.id);
                                 }
-                            })}> follow</button>
+                                props.toggleFollowing(user.id);
+                            })
+                    }
+                    }>
+                        unfollow
+                    </button> : (
+                        <button disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {
+                            props.toggleFollowing(user.id);
+                            usersAPI.follow(user.id)
+                                .then(response => {
+                                    if (response.data.resultCode == 0) {
+                                        props.follow(user.id);
+                                    }
+                                    props.toggleFollowing(user.id);
+                                })
+                        }
+                        }> follow </button>
                     )}
                     </div>
                     </span>

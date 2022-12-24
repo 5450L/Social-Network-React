@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const instanse = axios.create(
+const instance = axios.create(
     {
         withCredentials: true,
         baseURL: 'https://social-network.samuraijs.com/api/1.0/',
@@ -12,7 +12,7 @@ const instanse = axios.create(
 
 export const usersAPI = {
     getUsers(currentPage = 1, pageSize = 5) {
-        return instanse
+        return instance
             .get(
                 `users?page=${currentPage}&count=${pageSize}`
             ).then(response => {
@@ -20,9 +20,16 @@ export const usersAPI = {
             });
     },
     follow(id) {
-        return instanse.post(`follow/${id}`)
+        return instance.post(`follow/${id}`)
     },
     unfollow(id) {
-        return instanse.delete(`follow/${id}`)
+        return instance.delete(`follow/${id}`)
     }
-}
+};
+
+export const authAPI = {
+    auth() {
+        return instance
+            .get(`auth/me`)
+    }
+};

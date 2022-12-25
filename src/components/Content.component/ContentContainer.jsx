@@ -3,7 +3,7 @@ import contentStyles from "./Content.module.css";
 import Content from "./Content";
 import axios from "axios";
 import {connect} from "react-redux";
-import {setUserProfile} from "../../redux/reducers/profile-reducer";
+import {setProfile} from "../../redux/reducers/profile-reducer";
 import {useLocation, useNavigate, useParams} from "react-router";
 
 function withRouter(Component) {
@@ -26,14 +26,8 @@ class ContentContainer extends React.Component {
 
 
     componentDidMount() {
-
         let userId = this.props.router.params.userId;
-
-        axios
-            .get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
-            .then((response) => {
-                this.props.setUserProfile(response.data);
-            });
+        this.props.setProfile(userId);
     };
 
     render() {
@@ -49,4 +43,4 @@ let MapStateToProps = (state) => ({profile: state.profilePage.profile});
 
 let WithUrlDataContainerComponent = withRouter(ContentContainer);
 
-export default connect(MapStateToProps, {setUserProfile})(withRouter(ContentContainer));
+export default connect(MapStateToProps, {setProfile})(withRouter(ContentContainer));

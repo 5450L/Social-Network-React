@@ -82,7 +82,8 @@ export const getUsers = (currentPage, pageSize) => {
         dispatch(toggleFetching());
         usersAPI.getUsers(currentPage, pageSize).then(data => {
             dispatch(setUsers(data.items));
-            dispatch(setTotalUsersCount(data.totalCount))
+            dispatch(setTotalUsersCount(data.totalCount));
+            dispatch(setCurrentPage(currentPage));
             dispatch(toggleFetching());
         });
     };
@@ -95,7 +96,8 @@ export const follow = (userId) => {
             .then(response => {
                 if (response.data.resultCode == 0) {
                     dispatch(followSuccess(userId));
-                };
+                }
+                ;
                 dispatch(toggleFollowing(userId));
             });
     };
@@ -108,7 +110,8 @@ export const unfollow = (userId) => {
             .then(response => {
                 if (response.data.resultCode == 0) {
                     dispatch(unfollowSuccess(userId));
-                };
+                }
+                ;
                 dispatch(toggleFollowing(userId));
             });
     };

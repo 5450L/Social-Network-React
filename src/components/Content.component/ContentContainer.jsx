@@ -5,6 +5,9 @@ import axios from "axios";
 import {connect} from "react-redux";
 import {setProfile} from "../../redux/reducers/profile-reducer";
 import {useLocation, useNavigate, useParams} from "react-router";
+import {Navigate} from "react-router-dom";
+import {withAuthRedirectComponent} from "../../hoc/AuthRedirect";
+import {compose} from "redux";
 
 function withRouter(Component) {
     function ComponentWithRouterProp(props) {
@@ -23,14 +26,16 @@ function withRouter(Component) {
 }
 
 class ContentContainer extends React.Component {
-
-
     componentDidMount() {
         let userId = this.props.router.params.userId;
         this.props.setProfile(userId);
     };
 
     render() {
+        if (!this.props.isAuth) {
+            return <Navigate to={'/login'}/>
+        }
+        ;
         return (
             <div className={contentStyles.content}>
                 <Content {...this.props} profile={this.props.profile}></Content>
@@ -39,8 +44,12 @@ class ContentContainer extends React.Component {
     };
 };
 
-let MapStateToProps = (state) => ({profile: state.profilePage.profile});
-
-let WithUrlDataContainerComponent = withRouter(ContentContainer);
-
-export default connect(MapStateToProps, {setProfile})(withRouter(ContentContainer));
+let MapStateToProps = (state) => ({
+    profile: state.profilePage.profile,
+    // isAuth: state.auth.isAuth
+});
+export default compose(
+    connect(MapStateToProps, {setProfile}),
+    withRouter,
+    withAuthRedirectComponent
+)(ContentContainer)

@@ -5,6 +5,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import UsersContainer from "./components/Users.component/UsersContainer";
 import ContentContainer from "./components/Content.component/ContentContainer";
 import HeaderContainer from "./components/Header.component/HeaderContainer";
+import Login from "./components/Login.component/Login";
 
 const App = function (props) {
     return (
@@ -17,6 +18,7 @@ const App = function (props) {
                         <Route path="/dialogs" element={<Dialogs store={props.store}/>}/>
                         <Route path="/profile/:userId?" element={<ContentContainer/>}/>
                         <Route path="/users" element={<UsersContainer/>}/>
+                        <Route path="/login" element={<Login/>}/>
                     </Routes>
                 </div>
             </div>

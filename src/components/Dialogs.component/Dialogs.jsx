@@ -3,8 +3,13 @@ import dialogsStyles from './Dialogs.module.css';
 import DialogsItem from "./DialogsItem/DialogsItem";
 import Message from "./Message/Message";
 import MessageEditContainer from "./MessageEdit/MessageEditContainer";
+import {Navigate} from "react-router-dom"
+import {withAuthRedirectComponent} from "../../hoc/AuthRedirect";
 
 const Dialogs = (props) => {
+    if (!props.store.getState().auth.isAuth) {
+        return <Navigate to={'/login'}/>
+    }
 
     let dialogsTemplateArray = props.store.getState().dialogsPage.dialogs.map(dialog => <DialogsItem
         name={dialog.name}
@@ -29,7 +34,7 @@ const Dialogs = (props) => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Dialogs;

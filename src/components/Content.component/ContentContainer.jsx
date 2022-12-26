@@ -29,7 +29,7 @@ class ContentContainer extends React.Component {
     componentDidMount() {
         let userId = this.props.router.params.userId;
 
-        if (!userId) userId = 2;
+        if (!userId) userId = 27210;
 
         this.props.setProfile(userId);
         this.props.getUserStatus(userId);

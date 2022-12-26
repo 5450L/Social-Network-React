@@ -3,7 +3,7 @@ import contentStyles from "./Content.module.css";
 import Content from "./Content";
 import axios from "axios";
 import {connect} from "react-redux";
-import {setProfile} from "../../redux/reducers/profile-reducer";
+import {getUserStatus, setProfile, updateUserStatus} from "../../redux/reducers/profile-reducer";
 import {useLocation, useNavigate, useParams} from "react-router";
 import {Navigate} from "react-router-dom";
 import {withAuthRedirectComponent} from "../../hoc/AuthRedirect";
@@ -28,7 +28,11 @@ function withRouter(Component) {
 class ContentContainer extends React.Component {
     componentDidMount() {
         let userId = this.props.router.params.userId;
+
+        if (!userId) userId = 2;
+
         this.props.setProfile(userId);
+        this.props.getUserStatus(userId);
     };
 
     render() {
@@ -38,7 +42,8 @@ class ContentContainer extends React.Component {
         ;
         return (
             <div className={contentStyles.content}>
-                <Content {...this.props} profile={this.props.profile}></Content>
+                <Content {...this.props} profile={this.props.profile} status={this.props.status}
+                         updateUserStatus={this.props.updateUserStatus}></Content>
             </div>
         );
     };
@@ -46,10 +51,11 @@ class ContentContainer extends React.Component {
 
 let MapStateToProps = (state) => ({
     profile: state.profilePage.profile,
+    status: state.profilePage.status
     // isAuth: state.auth.isAuth
 });
 export default compose(
-    connect(MapStateToProps, {setProfile}),
+    connect(MapStateToProps, {setProfile, getUserStatus, updateUserStatus}),
     withRouter,
     withAuthRedirectComponent
 )(ContentContainer)

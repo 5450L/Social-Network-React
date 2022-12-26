@@ -16,26 +16,32 @@ export const usersAPI = {
             .get(
                 `users?page=${currentPage}&count=${pageSize}`
             ).then(response => {
-                return response.data
+                return response.data;
             });
     },
     follow(id) {
-        return instance.post(`follow/${id}`)
+        return instance.post(`follow/${id}`);
     },
     unfollow(id) {
-        return instance.delete(`follow/${id}`)
+        return instance.delete(`follow/${id}`);
     }
 };
 
 export const authAPI = {
     auth() {
         return instance
-            .get(`auth/me`)
+            .get(`auth/me`);
     }
 };
 
 export const profileAPI = {
     setUserProfile(id) {
         return instance.get(`profile/${id}`);
+    },
+    getStatus(id) {
+        return instance.get(`profile/status/${id}`);
+    },
+    updateStatus(status) {
+        return instance.put(`profile/status`, {status: status});
     }
 }

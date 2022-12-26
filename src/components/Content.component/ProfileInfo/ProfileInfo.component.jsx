@@ -16,7 +16,7 @@ const ProfileInfo = (props) => {
                 <img className={profileInfoStyles.userImage}
                      src={props.profile.photos.large ? props.profile.photos.large : "https://img.pravda.com/images/doc/c/5/c57f19f-bf6cc41-275622598-512933153533681-6934265882643283131-n.jpg"}
                      alt=""/>
-            <Status status={'Hello!'}/>
+                <Status status={props.status} updateUserStatus={props.updateUserStatus}/>
                 <p className={profileInfoStyles.description}>Description</p>
             </div>
         </div>

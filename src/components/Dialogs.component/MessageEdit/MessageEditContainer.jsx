@@ -1,5 +1,5 @@
 import MessageEdit from "./MessageEdit";
-import {sendMessageActionCreator, updateNewMessageTextActionCreator} from "../../../redux/reducers/dialogs-reducer";
+import {sendMessageActionCreator} from "../../../redux/reducers/dialogs-reducer";
 import {connect} from "react-redux";
 
 let MapStateToProps = (state) => {
@@ -7,11 +7,8 @@ let MapStateToProps = (state) => {
 }
 let MapDispatchToProps = (dispatch) => {
     return {
-        messageTextChange: (text) => {
-            dispatch(updateNewMessageTextActionCreator(text))
-        },
-        sendMessage: () => {
-            dispatch(sendMessageActionCreator())
+        sendMessage: (newMessage) => {
+            dispatch(sendMessageActionCreator(newMessage))
         }
     }
 }

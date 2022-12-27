@@ -1,26 +1,32 @@
 import React from "react";
-const MessageEdit = (props) => {
+import {Field, reduxForm} from "redux-form";
 
-    let newMessage = React.createRef();
-    let onSendMessage = () => {
-        props.sendMessage();
-    }
-
-    let onMessageTextChange = () => {
-        let text = newMessage.current.value;
-        props.messageTextChange(text);
-    }
+const MessageEditForm = (props) => {
 
     return (
-        <div>
-            <textarea placeholder="Type your message..." ref={newMessage} onChange={onMessageTextChange}
-                      value={props.newMessageText}></textarea>
+        <form onSubmit={props.handleSubmit}>
+            <Field name={'newMessage'} component={'textarea'} placeholder="Type your message..."/>
             <div>
-                <button onClick={onSendMessage}>Send Message</button>
+                <button>Send Message</button>
                 <button>Cancel</button>
             </div>
-        </div>
-    )
-}
+
+        </form>
+    );
+};
+
+const MessageEditReduxForm = reduxForm({form: 'messageEdit'})(MessageEditForm);
+
+const MessageEdit = (props) => {
+
+    const onSubmit = (form) => {
+        console.log(form);
+        props.sendMessage(form.newMessage);
+    };
+
+    return (
+        <MessageEditReduxForm {...props} onSubmit={onSubmit}/>
+    );
+};
 
 export default MessageEdit;

@@ -1,11 +1,14 @@
 import editPostStyles from './EditPost.module.css'
 import React from "react";
 import {Field, reduxForm} from "redux-form";
+import {required, maxLengthCreator} from "../../../../utils/validators/validators";
+import {Textarea} from "../../../shared/FormControls/FormControls";
 
 const EditPostForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
-            <Field name={'newPost'} component={'textarea'} placeholder="Type your post..."/>
+            <Field name={'newPost'} component={Textarea} validate={[required, maxLengthCreator(10)]}
+                   placeholder="Type your post..."/>
             <div className={editPostStyles.editButtons}>
                 <button>Create post</button>
                 <button>Cancel</button>

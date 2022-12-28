@@ -7,10 +7,12 @@ import {Navigate} from "react-router-dom"
 import {withAuthRedirectComponent} from "../../hoc/AuthRedirect";
 
 const Dialogs = (props) => {
-    if (!props.store.getState().auth.isAuth) {
-        return <Navigate to={'/login'}/>
-    }
-
+    setTimeout(() => {
+            if (!props.store.getState().auth.isAuth) {
+                return <Navigate to={'/login'}/>
+            };
+        }, 500
+    );
     let dialogsTemplateArray = props.store.getState().dialogsPage.dialogs.map(dialog => <DialogsItem
         name={dialog.name}
         id={dialog.id} key={dialog.id}/>);

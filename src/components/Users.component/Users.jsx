@@ -2,7 +2,7 @@ import usersStyles from "./Users.module.css";
 import React from "react";
 import {NavLink} from "react-router-dom";
 
-const Uses = (props) => {
+const Users = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
     let pages = [];
     for (let i = 1; i <= pagesCount; i++) {
@@ -79,4 +79,4 @@ const Uses = (props) => {
     );
 };
 
-export default Uses;
+export default Users;

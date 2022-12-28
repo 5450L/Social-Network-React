@@ -1,7 +1,6 @@
 import React from "react";
 import contentStyles from "./Content.module.css";
 import Content from "./Content";
-import axios from "axios";
 import {connect} from "react-redux";
 import {getUserStatus, setProfile, updateUserStatus} from "../../redux/reducers/profile-reducer";
 import {useLocation, useNavigate, useParams} from "react-router";

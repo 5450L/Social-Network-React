@@ -5,7 +5,11 @@
 
 .errorMessage {
     font-weight: bold;
-    font-size: 1.25rem;
     color: red;
     text-decoration-style: wavy;
+}
+
+.formSummaryError{
+    border: 2px solid red;
+    color: red;
 }

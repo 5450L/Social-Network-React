@@ -28,7 +28,7 @@ class ContentContainer extends React.Component {
     componentDidMount() {
         let userId = this.props.router.params.userId;
 
-        if (!userId) userId = 27210;
+        if (!userId) userId = this.props.userId ? this.props.userId : 27210;
 
         this.props.setProfile(userId);
         this.props.getUserStatus(userId);
@@ -50,8 +50,9 @@ class ContentContainer extends React.Component {
 
 let MapStateToProps = (state) => ({
     profile: state.profilePage.profile,
-    status: state.profilePage.status
-    // isAuth: state.auth.isAuth
+    status: state.profilePage.status,
+    authorizedUserId: state.auth.userId,
+    isAuth: state.auth.isAuth
 });
 export default compose(
     connect(MapStateToProps, {setProfile, getUserStatus, updateUserStatus}),

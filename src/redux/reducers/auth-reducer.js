@@ -32,7 +32,7 @@ export const setAuthUserDataSuccess = (userId, email, login, isAuth) => ({
 
 //thunks
 export const setAuthUserData = () => (dispatch) => {
-    authAPI.auth()
+   return authAPI.auth()
         .then((response) => {
             if (response.data.resultCode === 0) {
                 let {id, email, login} = response.data.data;

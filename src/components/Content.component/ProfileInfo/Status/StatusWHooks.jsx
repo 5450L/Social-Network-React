@@ -1,4 +1,4 @@
-import React, {createRef, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 
 const StatusWHooks = (props) => {
 
@@ -27,11 +27,11 @@ const StatusWHooks = (props) => {
             }
             {editMode &&
                 <div>
-                    <input defaultValue={'Status'} placeholder={'status'}
+                    <input placeholder={'status'}
                            autoFocus={true}
                            onBlur={toggleMode}
                            onChange={onStatusChange}
-                           defaultValue={status}
+                           defaultValue={status ? status || 'something' : 'Your status'}
                     />
                 </div>
             }

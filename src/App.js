@@ -15,7 +15,7 @@ import {initialize} from "./redux/reducers/app-reducer";
 class App extends Component {
 
     componentDidMount() {
-        this.props.initialize();
+        this.props.initialize()     ;
     };
 
     render() {

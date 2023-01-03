@@ -2,13 +2,13 @@
   "name": "first-react-project",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "jest": {
     "moduleNameMapper": {
       "axios": "axios/dist/node/axios.cjs"
     }
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.1",
@@ -19,6 +19,7 @@
     "react-router-dom": "^6.5.0",
     "react-scripts": "5.0.1",
     "redux": "^4.2.0",
+    "redux-devtools-extension": "^2.13.9",
     "redux-form": "^8.3.9",
     "redux-thunk": "^2.4.2",
     "reselect": "^4.1.7",

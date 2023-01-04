@@ -2,7 +2,7 @@
   "name": "first-react-project",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://5450l.github.io/social-network-react",
+  "homepage": "https://5450l.github.io/social-network-react/",
   "jest": {
     "moduleNameMapper": {
       "axios": "axios/dist/node/axios.cjs"

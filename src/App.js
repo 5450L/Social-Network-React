@@ -1,21 +1,28 @@
+import React from "react";
+
 import "./App.css";
-import Nav from "./components/Nav.component/Nav";
-import Dialogs from "./components/Dialogs.component/Dialogs";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import UsersContainer from "./components/Users.component/UsersContainer";
-import ContentContainer from "./components/Content.component/ContentContainer";
+
 import HeaderContainer from "./components/Header.component/HeaderContainer";
 import Login from "./components/Login.component/Login";
+import Preloader from "./components/shared/Preloader.component/Preloader";
+import Nav from "./components/Nav.component/Nav";
+
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+
 import {Component} from "react";
 import {connect} from "react-redux";
-import {setAuthUserData} from "./redux/reducers/auth-reducer";
-import Preloader from "./components/shared/Preloader.component/Preloader";
 import {initialize} from "./redux/reducers/app-reducer";
+import {Suspense} from "react";
+
+const Dialogs = React.lazy(() => import("./components/Dialogs.component/Dialogs"))
+const ContentContainer = React.lazy(() => import("./components/Content.component/ContentContainer"))
+const UsersContainer = React.lazy(() => import("./components/Users.component/UsersContainer"))
+
 
 class App extends Component {
 
     componentDidMount() {
-        this.props.initialize()     ;
+        this.props.initialize();
     };
 
     render() {
@@ -29,12 +36,15 @@ class App extends Component {
                     <HeaderContainer/>
                     <Nav/>
                     <div className="app-wrapper-content">
-                        <Routes>
-                            <Route path="/dialogs" element={<Dialogs store={this.props.store}/>}/>
-                            <Route path="/profile/:userId?" element={<ContentContainer/>}/>
-                            <Route path="/users" element={<UsersContainer/>}/>
-                            <Route path="/login" element={<Login/>}/>
-                        </Routes>
+                        <Suspense fallback={<Preloader/>}>
+                            <Routes>
+                                <Route path="/dialogs" element={<Dialogs store={this.props.store}/>}/>
+                                <Route path="/profile/:userId?" element={<ContentContainer/>}/>
+                                <Route path="/users" element={<UsersContainer/>}/>
+                                <Route path="/login" element={<Login/>}/>
+                                <Route path="/" element={<Login/>}/>
+                            </Routes>
+                        </Suspense>
                     </div>
                 </div>
             </BrowserRouter>
